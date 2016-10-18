@@ -1,10 +1,4 @@
-# Airbnb JavaScript Style Guide() {
-
-*A mostly reasonable approach to JavaScript*
-
-[![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb.svg)](https://www.npmjs.com/package/eslint-config-airbnb)
-[![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb-base.svg)](https://www.npmjs.com/package/eslint-config-airbnb-base)
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/airbnb/javascript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+# mce JavaScript Style Guide() {
 
 Other Style Guides
  - [ES5 (Deprecated)](https://github.com/airbnb/javascript/tree/es5-deprecated/es5)
@@ -95,7 +89,7 @@ Other Style Guides
   <a name="references--prefer-const"></a><a name="2.1"></a>
   - [2.1](#references--prefer-const) Use `const` for all of your references; avoid using `var`. eslint: [`prefer-const`](http://eslint.org/docs/rules/prefer-const.html), [`no-const-assign`](http://eslint.org/docs/rules/no-const-assign.html)
 
-    > Why? This ensures that you can't reassign your references, which can lead to bugs and difficult to comprehend code.
+    > Why? This ensures that you can"t reassign your references, which can lead to bugs and difficult to comprehend code.
 
     ```javascript
     // bad
@@ -168,15 +162,15 @@ Other Style Guides
     // bad
     const obj = {
       id: 5,
-      name: 'San Francisco',
+      name: "San Francisco",
     };
-    obj[getKey('enabled')] = true;
+    obj[getKey("enabled")] = true;
 
     // good
     const obj = {
       id: 5,
-      name: 'San Francisco',
-      [getKey('enabled')]: true,
+      name: "San Francisco",
+      [getKey("enabled")]: true,
     };
     ```
 
@@ -209,7 +203,7 @@ Other Style Guides
     > Why? It is shorter to write and descriptive.
 
     ```javascript
-    const lukeSkywalker = 'Luke Skywalker';
+    const lukeSkywalker = "Luke Skywalker";
 
     // bad
     const obj = {
@@ -225,11 +219,11 @@ Other Style Guides
   <a name="objects--grouped-shorthand"></a><a name="3.7"></a>
   - [3.5](#objects--grouped-shorthand) Group your shorthand properties at the beginning of your object declaration.
 
-    > Why? It's easier to tell which properties are using the shorthand.
+    > Why? It"s easier to tell which properties are using the shorthand.
 
     ```javascript
-    const anakinSkywalker = 'Anakin Skywalker';
-    const lukeSkywalker = 'Luke Skywalker';
+    const anakinSkywalker = "Anakin Skywalker";
+    const lukeSkywalker = "Luke Skywalker";
 
     // bad
     const obj = {
@@ -260,16 +254,16 @@ Other Style Guides
   ```javascript
   // bad
   const bad = {
-    'foo': 3,
-    'bar': 4,
-    'data-blah': 5,
+    "foo": 3,
+    "bar": 4,
+    "data-blah": 5,
   };
 
   // good
   const good = {
     foo: 3,
     bar: 4,
-    'data-blah': 5,
+    "data-blah": 5,
   };
   ```
 
@@ -288,7 +282,7 @@ Other Style Guides
   // best
   const has = Object.prototype.hasOwnProperty; // cache the lookup once, in module scope.
   /* or */
-  import has from 'has';
+  import has from "has";
   …
   console.log(has.call(object, key));
   ```
@@ -335,10 +329,10 @@ Other Style Guides
     const someStack = [];
 
     // bad
-    someStack[someStack.length] = 'abracadabra';
+    someStack[someStack.length] = "abracadabra";
 
     // good
-    someStack.push('abracadabra');
+    someStack.push("abracadabra");
     ```
 
   <a name="es6-array-spreads"></a><a name="4.3"></a>
@@ -362,12 +356,12 @@ Other Style Guides
   - [4.4](#arrays--from) To convert an array-like object to an array, use [Array.from](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from).
 
     ```javascript
-    const foo = document.querySelectorAll('.foo');
+    const foo = document.querySelectorAll(".foo");
     const nodes = Array.from(foo);
     ```
 
   <a name="arrays--callback-return"></a><a name="4.5"></a>
-  - [4.5](#arrays--callback-return) Use return statements in array method callbacks. It's ok to omit the return if the function body consists of a single statement following [8.2](#8.2). eslint: [`array-callback-return`](http://eslint.org/docs/rules/array-callback-return)
+  - [4.5](#arrays--callback-return) Use return statements in array method callbacks. It"s ok to omit the return if the function body consists of a single statement following [8.2](#8.2). eslint: [`array-callback-return`](http://eslint.org/docs/rules/array-callback-return)
 
     ```javascript
     // good
@@ -397,8 +391,8 @@ Other Style Guides
     // bad
     inbox.filter((msg) => {
       const { subject, author } = msg;
-      if (subject === 'Mockingbird') {
-        return author === 'Harper Lee';
+      if (subject === "Mockingbird") {
+        return author === "Harper Lee";
       } else {
         return false;
       }
@@ -407,8 +401,8 @@ Other Style Guides
     // good
     inbox.filter((msg) => {
       const { subject, author } = msg;
-      if (subject === 'Mockingbird') {
-        return author === 'Harper Lee';
+      if (subject === "Mockingbird") {
+        return author === "Harper Lee";
       }
 
       return false;
@@ -490,17 +484,17 @@ Other Style Guides
 ## Strings
 
   <a name="strings--quotes"></a><a name="6.1"></a>
-  - [6.1](#strings--quotes) Use single quotes `''` for strings. eslint: [`quotes`](http://eslint.org/docs/rules/quotes.html) jscs: [`validateQuoteMarks`](http://jscs.info/rule/validateQuoteMarks)
+  - [6.1](#strings--quotes) Use double quotes `""` for strings. eslint: [`quotes`](http://eslint.org/docs/rules/quotes.html) jscs: [`validateQuoteMarks`](http://jscs.info/rule/validateQuoteMarks)
 
     ```javascript
     // bad
-    const name = "Capt. Janeway";
+    const name = 'Capt. Janeway';
 
     // bad - template literals should contain interpolation or newlines
     const name = `Capt. Janeway`;
 
     // good
-    const name = 'Capt. Janeway';
+    const name = "Capt. Janeway";
     ```
 
   <a name="strings--line-length"></a><a name="6.2"></a>
@@ -510,18 +504,18 @@ Other Style Guides
 
     ```javascript
     // bad
-    const errorMessage = 'This is a super long error that was thrown because \
+    const errorMessage = "This is a super long error that was thrown because \
     of Batman. When you stop to think about how Batman had anything to do \
     with this, you would get nowhere \
-    fast.';
+    fast.";
 
     // bad
-    const errorMessage = 'This is a super long error that was thrown because ' +
-      'of Batman. When you stop to think about how Batman had anything to do ' +
-      'with this, you would get nowhere fast.';
+    const errorMessage = "This is a super long error that was thrown because " +
+      "of Batman. When you stop to think about how Batman had anything to do " +
+      "with this, you would get nowhere fast.";
 
     // good
-    const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
+    const errorMessage = "This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.";
     ```
 
   <a name="es6-template-literals"></a><a name="6.4"></a>
@@ -532,12 +526,12 @@ Other Style Guides
     ```javascript
     // bad
     function sayHi(name) {
-      return 'How are you, ' + name + '?';
+      return "How are you, " + name + "?";
     }
 
     // bad
     function sayHi(name) {
-      return ['How are you, ', name, '?'].join();
+      return ["How are you, ", name, "?"].join();
     }
 
     // bad
@@ -561,11 +555,11 @@ Other Style Guides
 
     ```javascript
     // bad
-    const foo = '\'this\' \i\s \"quoted\"';
+    const foo = "\"this\" \i\s \"quoted\"";
 
     // good
-    const foo = '\'this\' is "quoted"';
-    const foo = `'this' is "quoted"`;
+    const foo = "\"this\" is "quoted"";
+    const foo = `"this" is "quoted"`;
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -576,7 +570,7 @@ Other Style Guides
   <a name="functions--declarations"></a><a name="7.1"></a>
   - [7.1](#functions--declarations) Use named function expressions instead of function declarations. eslint: [`func-style`](http://eslint.org/docs/rules/func-style) jscs: [`requireFunctionDeclarations`](http://jscs.info/rule/requireFunctionDeclarations)
 
-    > Why? Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to name the expression - anonymous functions can make it harder to locate the problem in an Error's call stack.
+    > Why? Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to name the expression - anonymous functions can make it harder to locate the problem in an Error"s call stack.
 
     ```javascript
     // bad
@@ -600,7 +594,7 @@ Other Style Guides
     ```javascript
     // immediately-invoked function expression (IIFE)
     (function () {
-      console.log('Welcome to the Internet. Please follow me.');
+      console.log("Welcome to the Internet. Please follow me.");
     }());
     ```
 
@@ -608,13 +602,13 @@ Other Style Guides
   - [7.3](#functions--in-blocks) Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears. eslint: [`no-loop-func`](http://eslint.org/docs/rules/no-loop-func.html)
 
   <a name="functions--note-on-blocks"></a><a name="7.4"></a>
-  - [7.4](#functions--note-on-blocks) **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement. [Read ECMA-262's note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
+  - [7.4](#functions--note-on-blocks) **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement. [Read ECMA-262"s note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
 
     ```javascript
     // bad
     if (currentUser) {
       function test() {
-        console.log('Nope.');
+        console.log("Nope.");
       }
     }
 
@@ -622,7 +616,7 @@ Other Style Guides
     let test;
     if (currentUser) {
       test = () => {
-        console.log('Yup.');
+        console.log("Yup.");
       };
     }
     ```
@@ -651,12 +645,12 @@ Other Style Guides
     // bad
     function concatenateAll() {
       const args = Array.prototype.slice.call(arguments);
-      return args.join('');
+      return args.join("");
     }
 
     // good
     function concatenateAll(...args) {
-      return args.join('');
+      return args.join("");
     }
     ```
 
@@ -666,8 +660,8 @@ Other Style Guides
     ```javascript
     // really bad
     function handleThings(opts) {
-      // No! We shouldn't mutate function arguments.
-      // Double bad: if opts is falsy it'll be set to an object which may
+      // No! We shouldn"t mutate function arguments.
+      // Double bad: if opts is falsy it"ll be set to an object which may
       // be what you want but it can introduce subtle bugs.
       opts = opts || {};
       // ...
@@ -726,10 +720,10 @@ Other Style Guides
 
     ```javascript
     // bad
-    var add = new Function('a', 'b', 'return a + b');
+    var add = new Function("a", "b", "return a + b");
 
     // still bad
-    var subtract = Function('a', 'b', 'return a - b');
+    var subtract = Function("a", "b", "return a - b");
     ```
 
   <a name="functions--signature-spacing"></a><a name="7.11"></a>
@@ -761,7 +755,7 @@ Other Style Guides
 
     // good
     function f2(obj) {
-      const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
+      const key = Object.prototype.hasOwnProperty.call(obj, "key") ? obj.key : 1;
     };
     ```
 
@@ -792,7 +786,7 @@ Other Style Guides
   <a name="functions--spread-vs-apply"></a><a name="7.14"></a>
   - [7.14](#functions--spread-vs-apply) Prefer the use of the spread operator `...` to call variadic functions. eslint: [`prefer-spread`](http://eslint.org/docs/rules/prefer-spread)
 
-    > Why? It's cleaner, you don't need to supply a context, and you can not easily compose `new` with `apply`.
+    > Why? It"s cleaner, you don"t need to supply a context, and you can not easily compose `new` with `apply`.
 
     ```javascript
     // bad
@@ -869,14 +863,14 @@ Other Style Guides
 
     ```js
     // bad
-    ['get', 'post', 'put'].map(httpMethod => Object.prototype.hasOwnProperty.call(
+    ["get", "post", "put"].map(httpMethod => Object.prototype.hasOwnProperty.call(
         httpMagicObjectWithAVeryLongName,
         httpMethod
       )
     );
 
     // good
-    ['get', 'post', 'put'].map(httpMethod => (
+    ["get", "post", "put"].map(httpMethod => (
       Object.prototype.hasOwnProperty.call(
         httpMagicObjectWithAVeryLongName,
         httpMethod
@@ -976,7 +970,7 @@ Other Style Guides
 
     ```javascript
     // bad
-    const inherits = require('inherits');
+    const inherits = require("inherits");
     function PeekableQueue(contents) {
       Queue.apply(this, contents);
     }
@@ -1032,12 +1026,12 @@ Other Style Guides
 
 
   <a name="constructors--tostring"></a><a name="9.4"></a>
-  - [9.4](#constructors--tostring) It's okay to write a custom toString() method, just make sure it works successfully and causes no side effects.
+  - [9.4](#constructors--tostring) It"s okay to write a custom toString() method, just make sure it works successfully and causes no side effects.
 
     ```javascript
     class Jedi {
       constructor(options = {}) {
-        this.name = options.name || 'no name';
+        this.name = options.name || "no name";
       }
 
       getName() {
@@ -1074,7 +1068,7 @@ Other Style Guides
     class Rey extends Jedi {
       constructor(...args) {
         super(...args);
-        this.name = 'Rey';
+        this.name = "Rey";
       }
     }
     ```
@@ -1111,19 +1105,19 @@ Other Style Guides
   <a name="modules--use-them"></a><a name="10.1"></a>
   - [10.1](#modules--use-them) Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
 
-    > Why? Modules are the future, let's start using the future now.
+    > Why? Modules are the future, let"s start using the future now.
 
     ```javascript
     // bad
-    const AirbnbStyleGuide = require('./AirbnbStyleGuide');
+    const AirbnbStyleGuide = require("./AirbnbStyleGuide");
     module.exports = AirbnbStyleGuide.es6;
 
     // ok
-    import AirbnbStyleGuide from './AirbnbStyleGuide';
+    import AirbnbStyleGuide from "./AirbnbStyleGuide";
     export default AirbnbStyleGuide.es6;
 
     // best
-    import { es6 } from './AirbnbStyleGuide';
+    import { es6 } from "./AirbnbStyleGuide";
     export default es6;
     ```
 
@@ -1134,10 +1128,10 @@ Other Style Guides
 
     ```javascript
     // bad
-    import * as AirbnbStyleGuide from './AirbnbStyleGuide';
+    import * as AirbnbStyleGuide from "./AirbnbStyleGuide";
 
     // good
-    import AirbnbStyleGuide from './AirbnbStyleGuide';
+    import AirbnbStyleGuide from "./AirbnbStyleGuide";
     ```
 
   <a name="modules--no-export-from-import"></a><a name="10.3"></a>
@@ -1148,11 +1142,11 @@ Other Style Guides
     ```javascript
     // bad
     // filename es6.js
-    export { es6 as default } from './AirbnbStyleGuide';
+    export { es6 as default } from "./AirbnbStyleGuide";
 
     // good
     // filename es6.js
-    import { es6 } from './AirbnbStyleGuide';
+    import { es6 } from "./AirbnbStyleGuide";
     export default es6;
     ```
 
@@ -1163,18 +1157,18 @@ Other Style Guides
 
     ```javascript
     // bad
-    import foo from 'foo';
+    import foo from "foo";
     // … some other imports … //
-    import { named1, named2 } from 'foo';
+    import { named1, named2 } from "foo";
 
     // good
-    import foo, { named1, named2 } from 'foo';
+    import foo, { named1, named2 } from "foo";
 
     // good
     import foo, {
       named1,
       named2,
-    } from 'foo';
+    } from "foo";
     ```
 
   <a name="modules--no-mutable-exports"></a>
@@ -1211,14 +1205,14 @@ Other Style Guides
 
     ```javascript
     // bad
-    import foo from 'foo';
+    import foo from "foo";
     foo.init();
 
-    import bar from 'bar';
+    import bar from "bar";
 
     // good
-    import foo from 'foo';
-    import bar from 'bar';
+    import foo from "foo";
+    import bar from "bar";
 
     foo.init();
     ```
@@ -1230,7 +1224,7 @@ Other Style Guides
 
     ```javascript
     // bad
-    import {longNameA, longNameB, longNameC, longNameD, longNameE} from 'path';
+    import {longNameA, longNameB, longNameC, longNameD, longNameE} from "path";
 
     // good
     import {
@@ -1239,7 +1233,7 @@ Other Style Guides
       longNameC,
       longNameD,
       longNameE,
-    } from 'path';
+    } from "path";
     ```
 
   <a name="modules--no-webpack-loader-syntax"></a>
@@ -1249,12 +1243,12 @@ Other Style Guides
 
     ```javascript
     // bad
-    import fooSass from 'css!sass!foo.scss';
-    import barCss from 'style!css!bar.css';
+    import fooSass from "css!sass!foo.scss";
+    import barCss from "style!css!bar.css";
 
     // good
-    import fooSass from 'foo.scss';
-    import barCss from 'bar.css';
+    import fooSass from "foo.scss";
+    import barCss from "bar.css";
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1262,7 +1256,7 @@ Other Style Guides
 ## Iterators and Generators
 
   <a name="iterators--nope"></a><a name="11.1"></a>
-  - [11.1](#iterators--nope) Don't use iterators. Prefer JavaScript's higher-order functions instead of loops like `for-in` or `for-of`. eslint: [`no-iterator`](http://eslint.org/docs/rules/no-iterator.html) [`no-restricted-syntax`](http://eslint.org/docs/rules/no-restricted-syntax)
+  - [11.1](#iterators--nope) Don"t use iterators. Prefer JavaScript"s higher-order functions instead of loops like `for-in` or `for-of`. eslint: [`no-iterator`](http://eslint.org/docs/rules/no-iterator.html) [`no-restricted-syntax`](http://eslint.org/docs/rules/no-restricted-syntax)
 
     > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects.
 
@@ -1290,9 +1284,9 @@ Other Style Guides
     ```
 
   <a name="generators--nope"></a><a name="11.2"></a>
-  - [11.2](#generators--nope) Don't use generators for now.
+  - [11.2](#generators--nope) Don"t use generators for now.
 
-    > Why? They don't transpile well to ES5.
+    > Why? They don"t transpile well to ES5.
 
   <a name="generators--spacing"></a>
   - [11.3](#generators--spacing) If you must use generators, or if you disregard [our advice](#generators--nope), make sure their function signature is spaced properly. eslint: [`generator-star-spacing`](http://eslint.org/docs/rules/generator-star-spacing)
@@ -1353,7 +1347,7 @@ Other Style Guides
     };
 
     // bad
-    const isJedi = luke['jedi'];
+    const isJedi = luke["jedi"];
 
     // good
     const isJedi = luke.jedi;
@@ -1372,7 +1366,7 @@ Other Style Guides
       return luke[prop];
     }
 
-    const isJedi = getProp('jedi');
+    const isJedi = getProp("jedi");
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1394,24 +1388,24 @@ Other Style Guides
   <a name="variables--one-const"></a><a name="13.2"></a>
   - [13.2](#variables--one-const) Use one `const` declaration per variable. eslint: [`one-var`](http://eslint.org/docs/rules/one-var.html) jscs: [`disallowMultipleVarDecl`](http://jscs.info/rule/disallowMultipleVarDecl)
 
-    > Why? It's easier to add new variable declarations this way, and you never have to worry about swapping out a `;` for a `,` or introducing punctuation-only diffs. You can also step through each declaration with the debugger, instead of jumping through all of them at once.
+    > Why? It"s easier to add new variable declarations this way, and you never have to worry about swapping out a `;` for a `,` or introducing punctuation-only diffs. You can also step through each declaration with the debugger, instead of jumping through all of them at once.
 
     ```javascript
     // bad
     const items = getItems(),
         goSportsTeam = true,
-        dragonball = 'z';
+        dragonball = "z";
 
     // bad
     // (compare to above, and try to spot the mistake)
     const items = getItems(),
         goSportsTeam = true;
-        dragonball = 'z';
+        dragonball = "z";
 
     // good
     const items = getItems();
     const goSportsTeam = true;
-    const dragonball = 'z';
+    const dragonball = "z";
     ```
 
   <a name="variables--const-let-group"></a><a name="13.3"></a>
@@ -1450,12 +1444,12 @@ Other Style Guides
     function checkName(hasName) {
       const name = getName();
 
-      if (hasName === 'test') {
+      if (hasName === "test") {
         return false;
       }
 
-      if (name === 'test') {
-        this.setName('');
+      if (name === "test") {
+        this.setName("");
         return false;
       }
 
@@ -1464,14 +1458,14 @@ Other Style Guides
 
     // good
     function checkName(hasName) {
-      if (hasName === 'test') {
+      if (hasName === "test") {
         return false;
       }
 
       const name = getName();
 
-      if (name === 'test') {
-        this.setName('');
+      if (name === "test") {
+        this.setName("");
         return false;
       }
 
@@ -1479,7 +1473,7 @@ Other Style Guides
     }
     ```
   <a name="variables--no-chain-assignment"></a><a name="13.5"></a>
-  - [13.5](#variables--no-chain-assignment) Don't chain variable assignments.
+  - [13.5](#variables--no-chain-assignment) Don"t chain variable assignments.
 
     > Why? Chaining variable assignments creates implicit global variables.
 
@@ -1551,10 +1545,10 @@ Other Style Guides
 ## Hoisting
 
   <a name="hoisting--about"></a><a name="14.1"></a>
-  - [14.1](#hoisting--about) `var` declarations get hoisted to the top of their scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let). It's important to know why [typeof is no longer safe](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
+  - [14.1](#hoisting--about) `var` declarations get hoisted to the top of their scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let). It"s important to know why [typeof is no longer safe](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
 
     ```javascript
-    // we know this wouldn't work (assuming there
+    // we know this wouldn"t work (assuming there
     // is no notDefined global variable)
     function example() {
       console.log(notDefined); // => throws a ReferenceError
@@ -1596,7 +1590,7 @@ Other Style Guides
       anonymous(); // => TypeError anonymous is not a function
 
       var anonymous = function () {
-        console.log('anonymous function expression');
+        console.log("anonymous function expression");
       };
     }
     ```
@@ -1613,7 +1607,7 @@ Other Style Guides
       superPower(); // => ReferenceError superPower is not defined
 
       var named = function superPower() {
-        console.log('Flying');
+        console.log("Flying");
       };
     }
 
@@ -1625,7 +1619,7 @@ Other Style Guides
       named(); // => TypeError named is not a function
 
       var named = function named() {
-        console.log('named');
+        console.log("named");
       }
     }
     ```
@@ -1638,7 +1632,7 @@ Other Style Guides
       superPower(); // => Flying
 
       function superPower() {
-        console.log('Flying');
+        console.log("Flying");
       }
     }
     ```
@@ -1661,7 +1655,7 @@ Other Style Guides
     + **Null** evaluates to **false**
     + **Booleans** evaluate to **the value of the boolean**
     + **Numbers** evaluate to **false** if **+0, -0, or NaN**, otherwise **true**
-    + **Strings** evaluate to **false** if an empty string `''`, otherwise **true**
+    + **Strings** evaluate to **false** if an empty string `""`, otherwise **true**
 
     ```javascript
     if ([0] && []) {
@@ -1690,7 +1684,7 @@ Other Style Guides
     }
 
     // good
-    if (name !== '') {
+    if (name !== "") {
       // ...stuff...
     }
 
@@ -1766,16 +1760,16 @@ Other Style Guides
       : value1 > value2 ? "baz" : null;
 
     // better
-    const maybeNull = value1 > value2 ? 'baz' : null;
+    const maybeNull = value1 > value2 ? "baz" : null;
 
     const foo = maybe1 > maybe2
-      ? 'bar'
+      ? "bar"
       : maybeNull;
 
     // best
-    const maybeNull = value1 > value2 ? 'baz' : null;
+    const maybeNull = value1 > value2 ? "baz" : null;
 
-    const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
+    const foo = maybe1 > maybe2 ? "bar" : maybeNull;
     ```
 
   <a name="comparison--unneeded-ternary"></a><a name="15.7"></a>
@@ -1826,7 +1820,7 @@ Other Style Guides
     ```
 
   <a name="blocks--cuddled-elses"></a><a name="16.2"></a>
-  - [16.2](#blocks--cuddled-elses) If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your `if` block's closing brace. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
+  - [16.2](#blocks--cuddled-elses) If you"re using multi-line blocks with `if` and `else`, put `else` on the same line as your `if` block"s closing brace. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
 
     ```javascript
     // bad
@@ -1884,7 +1878,7 @@ Other Style Guides
     ```
 
   <a name="comments--singleline"></a><a name="17.2"></a>
-  - [17.2](#comments--singleline) Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment unless it's on the first line of a block.
+  - [17.2](#comments--singleline) Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment unless it"s on the first line of a block.
 
     ```javascript
     // bad
@@ -1896,34 +1890,34 @@ Other Style Guides
 
     // bad
     function getType() {
-      console.log('fetching type...');
-      // set the default type to 'no type'
-      const type = this._type || 'no type';
+      console.log("fetching type...");
+      // set the default type to "no type"
+      const type = this._type || "no type";
 
       return type;
     }
 
     // good
     function getType() {
-      console.log('fetching type...');
+      console.log("fetching type...");
 
-      // set the default type to 'no type'
-      const type = this._type || 'no type';
+      // set the default type to "no type"
+      const type = this._type || "no type";
 
       return type;
     }
 
     // also good
     function getType() {
-      // set the default type to 'no type'
-      const type = this._type || 'no type';
+      // set the default type to "no type"
+      const type = this._type || "no type";
 
       return type;
     }
     ```
 
   <a name="comments--actionitems"></a><a name="17.3"></a>
-  - [17.3](#comments--actionitems) Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME: -- need to figure this out` or `TODO: -- need to implement`.
+  - [17.3](#comments--actionitems) Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you"re pointing out a problem that needs to be revisited, or if you"re suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME: -- need to figure this out` or `TODO: -- need to implement`.
 
   <a name="comments--fixme"></a><a name="17.4"></a>
   - [17.4](#comments--fixme) Use `// FIXME:` to annotate problems.
@@ -1933,7 +1927,7 @@ Other Style Guides
       constructor() {
         super();
 
-        // FIXME: shouldn't use a global here
+        // FIXME: shouldn"t use a global here
         total = 0;
       }
     }
@@ -1984,24 +1978,24 @@ Other Style Guides
     ```javascript
     // bad
     function test(){
-      console.log('test');
+      console.log("test");
     }
 
     // good
     function test() {
-      console.log('test');
+      console.log("test");
     }
 
     // bad
-    dog.set('attr',{
-      age: '1 year',
-      breed: 'Bernese Mountain Dog',
+    dog.set("attr",{
+      age: "1 year",
+      breed: "Bernese Mountain Dog",
     });
 
     // good
-    dog.set('attr', {
-      age: '1 year',
-      breed: 'Bernese Mountain Dog',
+    dog.set("attr", {
+      age: "1 year",
+      breed: "Bernese Mountain Dog",
     });
     ```
 
@@ -2021,12 +2015,12 @@ Other Style Guides
 
     // bad
     function fight () {
-      console.log ('Swooosh!');
+      console.log ("Swooosh!");
     }
 
     // good
     function fight() {
-      console.log('Swooosh!');
+      console.log("Swooosh!");
     }
     ```
 
@@ -2072,42 +2066,42 @@ Other Style Guides
 
     ```javascript
     // bad
-    $('#items').find('.selected').highlight().end().find('.open').updateCount();
+    $("#items").find(".selected").highlight().end().find(".open").updateCount();
 
     // bad
-    $('#items').
-      find('.selected').
+    $("#items").
+      find(".selected").
         highlight().
         end().
-      find('.open').
+      find(".open").
         updateCount();
 
     // good
-    $('#items')
-      .find('.selected')
+    $("#items")
+      .find(".selected")
         .highlight()
         .end()
-      .find('.open')
+      .find(".open")
         .updateCount();
 
     // bad
-    const leds = stage.selectAll('.led').data(data).enter().append('svg:svg').classed('led', true)
-        .attr('width', (radius + margin) * 2).append('svg:g')
-        .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
+    const leds = stage.selectAll(".led").data(data).enter().append("svg:svg").classed("led", true)
+        .attr("width", (radius + margin) * 2).append("svg:g")
+        .attr("transform", "translate(" + (radius + margin) + "," + (radius + margin) + ")")
         .call(tron.led);
 
     // good
-    const leds = stage.selectAll('.led')
+    const leds = stage.selectAll(".led")
         .data(data)
-      .enter().append('svg:svg')
-        .classed('led', true)
-        .attr('width', (radius + margin) * 2)
-      .append('svg:g')
-        .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
+      .enter().append("svg:svg")
+        .classed("led", true)
+        .attr("width", (radius + margin) * 2)
+      .append("svg:g")
+        .attr("transform", "translate(" + (radius + margin) + "," + (radius + margin) + ")")
         .call(tron.led);
 
     // good
-    const leds = stage.selectAll('.led').data(data);
+    const leds = stage.selectAll(".led").data(data);
     ```
 
   <a name="whitespace--after-blocks"></a><a name="18.7"></a>
@@ -2244,10 +2238,10 @@ Other Style Guides
 
     ```javascript
     // bad
-    const foo = {clark: 'kent'};
+    const foo = {clark: "kent"};
 
     // good
-    const foo = { clark: 'kent' };
+    const foo = { clark: "kent" };
     ```
 
   <a name="whitespace--max-len"></a><a name="18.12"></a>
@@ -2260,7 +2254,7 @@ Other Style Guides
     const foo = jsonData && jsonData.foo && jsonData.foo.bar && jsonData.foo.bar.baz && jsonData.foo.bar.baz.quux && jsonData.foo.bar.baz.quux.xyzzy;
 
     // bad
-    $.ajax({ method: 'POST', url: 'https://airbnb.com/', data: { name: 'John' } }).done(() => console.log('Congratulations!')).fail(() => console.log('You have failed this city.'));
+    $.ajax({ method: "POST", url: "https://airbnb.com/", data: { name: "John" } }).done(() => console.log("Congratulations!")).fail(() => console.log("You have failed this city."));
 
     // good
     const foo = jsonData
@@ -2272,12 +2266,12 @@ Other Style Guides
 
     // good
     $.ajax({
-      method: 'POST',
-      url: 'https://airbnb.com/',
-      data: { name: 'John' },
+      method: "POST",
+      url: "https://airbnb.com/",
+      data: { name: "John" },
     })
-      .done(() => console.log('Congratulations!'))
-      .fail(() => console.log('You have failed this city.'));
+      .done(() => console.log("Congratulations!"))
+      .fail(() => console.log("You have failed this city."));
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -2304,62 +2298,62 @@ Other Style Guides
 
     // bad
     const hero = {
-        firstName: 'Ada'
-      , lastName: 'Lovelace'
+        firstName: "Ada"
+      , lastName: "Lovelace"
       , birthYear: 1815
-      , superPower: 'computers'
+      , superPower: "computers"
     };
 
     // good
     const hero = {
-      firstName: 'Ada',
-      lastName: 'Lovelace',
+      firstName: "Ada",
+      lastName: "Lovelace",
       birthYear: 1815,
-      superPower: 'computers',
+      superPower: "computers",
     };
     ```
 
   <a name="commas--dangling"></a><a name="19.2"></a>
   - [19.2](#commas--dangling) Additional trailing comma: **Yup.** eslint: [`comma-dangle`](http://eslint.org/docs/rules/comma-dangle.html) jscs: [`requireTrailingComma`](http://jscs.info/rule/requireTrailingComma)
 
-    > Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don't have to worry about the [trailing comma problem](https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas) in legacy browsers.
+    > Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don"t have to worry about the [trailing comma problem](https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas) in legacy browsers.
 
     ```javascript
     // bad - git diff without trailing comma
     const hero = {
-         firstName: 'Florence',
-    -    lastName: 'Nightingale'
-    +    lastName: 'Nightingale',
-    +    inventorOf: ['coxcomb chart', 'modern nursing']
+         firstName: "Florence",
+    -    lastName: "Nightingale"
+    +    lastName: "Nightingale",
+    +    inventorOf: ["coxcomb chart", "modern nursing"]
     };
 
     // good - git diff with trailing comma
     const hero = {
-         firstName: 'Florence',
-         lastName: 'Nightingale',
-    +    inventorOf: ['coxcomb chart', 'modern nursing'],
+         firstName: "Florence",
+         lastName: "Nightingale",
+    +    inventorOf: ["coxcomb chart", "modern nursing"],
     };
 
     // bad
     const hero = {
-      firstName: 'Dana',
-      lastName: 'Scully'
+      firstName: "Dana",
+      lastName: "Scully"
     };
 
     const heroes = [
-      'Batman',
-      'Superman'
+      "Batman",
+      "Superman"
     ];
 
     // good
     const hero = {
-      firstName: 'Dana',
-      lastName: 'Scully',
+      firstName: "Dana",
+      lastName: "Scully",
     };
 
     const heroes = [
-      'Batman',
-      'Superman',
+      "Batman",
+      "Superman",
     ];
     ```
 
@@ -2374,19 +2368,19 @@ Other Style Guides
     ```javascript
     // bad
     (function () {
-      const name = 'Skywalker'
+      const name = "Skywalker"
       return name
     })()
 
     // good
     (function () {
-      const name = 'Skywalker';
+      const name = "Skywalker";
       return name;
     }());
 
     // good, but legacy (guards against the function becoming an argument when two files with IIFEs are concatenated)
     ;(() => {
-      const name = 'Skywalker';
+      const name = "Skywalker";
       return name;
     }());
     ```
@@ -2408,10 +2402,10 @@ Other Style Guides
     // => this.reviewScore = 9;
 
     // bad
-    const totalScore = this.reviewScore + ''; // invokes this.reviewScore.valueOf()
+    const totalScore = this.reviewScore + ""; // invokes this.reviewScore.valueOf()
 
     // bad
-    const totalScore = this.reviewScore.toString(); // isn't guaranteed to return a string
+    const totalScore = this.reviewScore.toString(); // isn"t guaranteed to return a string
 
     // good
     const totalScore = String(this.reviewScore);
@@ -2421,7 +2415,7 @@ Other Style Guides
   - [21.3](#coercion--numbers) Numbers: Use `Number` for type casting and `parseInt` always with a radix for parsing strings. eslint: [`radix`](http://eslint.org/docs/rules/radix)
 
     ```javascript
-    const inputValue = '4';
+    const inputValue = "4";
 
     // bad
     const val = new Number(inputValue);
@@ -2443,7 +2437,7 @@ Other Style Guides
     ```
 
   <a name="coercion--comment-deviations"></a><a name="21.4"></a>
-  - [21.4](#coercion--comment-deviations) If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](https://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you're doing.
+  - [21.4](#coercion--comment-deviations) If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](https://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you"re doing.
 
     ```javascript
     // good
@@ -2524,7 +2518,7 @@ Other Style Guides
     }
 
     const bad = new user({
-      name: 'nope',
+      name: "nope",
     });
 
     // good
@@ -2535,27 +2529,27 @@ Other Style Guides
     }
 
     const good = new User({
-      name: 'yup',
+      name: "yup",
     });
     ```
 
   <a name="naming--leading-underscore"></a><a name="22.4"></a>
   - [22.4](#naming--leading-underscore) Do not use trailing or leading underscores. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
 
-    > Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won't count as breaking, or that tests aren't needed. tl;dr: if you want something to be “private”, it must not be observably present.
+    > Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won"t count as breaking, or that tests aren"t needed. tl;dr: if you want something to be “private”, it must not be observably present.
 
     ```javascript
     // bad
-    this.__firstName__ = 'Panda';
-    this.firstName_ = 'Panda';
-    this._firstName = 'Panda';
+    this.__firstName__ = "Panda";
+    this.firstName_ = "Panda";
+    this._firstName = "Panda";
 
     // good
-    this.firstName = 'Panda';
+    this.firstName = "Panda";
     ```
 
   <a name="naming--self-this"></a><a name="22.5"></a>
-  - [22.5](#naming--self-this) Don't save references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind). jscs: [`disallowNodeTypes`](http://jscs.info/rule/disallowNodeTypes)
+  - [22.5](#naming--self-this) Don"t save references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind). jscs: [`disallowNodeTypes`](http://jscs.info/rule/disallowNodeTypes)
 
     ```javascript
     // bad
@@ -2600,26 +2594,26 @@ Other Style Guides
 
     // in some other file
     // bad
-    import CheckBox from './checkBox'; // PascalCase import/export, camelCase filename
-    import FortyTwo from './FortyTwo'; // PascalCase import/filename, camelCase export
-    import InsideDirectory from './InsideDirectory'; // PascalCase import/filename, camelCase export
+    import CheckBox from "./checkBox"; // PascalCase import/export, camelCase filename
+    import FortyTwo from "./FortyTwo"; // PascalCase import/filename, camelCase export
+    import InsideDirectory from "./InsideDirectory"; // PascalCase import/filename, camelCase export
 
     // bad
-    import CheckBox from './check_box'; // PascalCase import/export, snake_case filename
-    import forty_two from './forty_two'; // snake_case import/filename, camelCase export
-    import inside_directory from './inside_directory'; // snake_case import, camelCase export
-    import index from './inside_directory/index'; // requiring the index file explicitly
-    import insideDirectory from './insideDirectory/index'; // requiring the index file explicitly
+    import CheckBox from "./check_box"; // PascalCase import/export, snake_case filename
+    import forty_two from "./forty_two"; // snake_case import/filename, camelCase export
+    import inside_directory from "./inside_directory"; // snake_case import, camelCase export
+    import index from "./inside_directory/index"; // requiring the index file explicitly
+    import insideDirectory from "./insideDirectory/index"; // requiring the index file explicitly
 
     // good
-    import CheckBox from './CheckBox'; // PascalCase export/import/filename
-    import fortyTwo from './fortyTwo'; // camelCase export/import/filename
-    import insideDirectory from './insideDirectory'; // camelCase export/import/directory name/implicit "index"
+    import CheckBox from "./CheckBox"; // PascalCase export/import/filename
+    import fortyTwo from "./fortyTwo"; // camelCase export/import/filename
+    import insideDirectory from "./insideDirectory"; // camelCase export/import/directory name/implicit "index"
     // ^ supports both insideDirectory.js and insideDirectory/index.js
     ```
 
   <a name="naming--camelCase-default-export"></a><a name="22.7"></a>
-  - [22.7](#naming--camelCase-default-export) Use camelCase when you export-default a function. Your filename should be identical to your function's name.
+  - [22.7](#naming--camelCase-default-export) Use camelCase when you export-default a function. Your filename should be identical to your function"s name.
 
     ```javascript
     function makeStyleGuide() {
@@ -2650,7 +2644,7 @@ Other Style Guides
   - [23.1](#accessors--not-required) Accessor functions for properties are not required.
 
   <a name="accessors--no-getters-setters"></a><a name="23.2"></a>
-  - [23.2](#accessors--no-getters-setters) Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use getVal() and setVal('hello').
+  - [23.2](#accessors--no-getters-setters) Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use getVal() and setVal("hello").
 
     ```javascript
     // bad
@@ -2692,13 +2686,13 @@ Other Style Guides
     ```
 
   <a name="accessors--consistent"></a><a name="23.4"></a>
-  - [23.4](#accessors--consistent) It's okay to create get() and set() functions, but be consistent.
+  - [23.4](#accessors--consistent) It"s okay to create get() and set() functions, but be consistent.
 
     ```javascript
     class Jedi {
       constructor(options = {}) {
-        const lightsaber = options.lightsaber || 'blue';
-        this.set('lightsaber', lightsaber);
+        const lightsaber = options.lightsaber || "blue";
+        this.set("lightsaber", lightsaber);
       }
 
       set(key, val) {
@@ -2721,11 +2715,11 @@ Other Style Guides
 
     ```javascript
     // bad
-    $(this).trigger('listingUpdated', listing.id);
+    $(this).trigger("listingUpdated", listing.id);
 
     ...
 
-    $(this).on('listingUpdated', (e, listingId) => {
+    $(this).on("listingUpdated", (e, listingId) => {
       // do something with listingId
     });
     ```
@@ -2734,11 +2728,11 @@ Other Style Guides
 
     ```javascript
     // good
-    $(this).trigger('listingUpdated', { listingId: listing.id });
+    $(this).trigger("listingUpdated", { listingId: listing.id });
 
     ...
 
-    $(this).on('listingUpdated', (e, data) => {
+    $(this).on("listingUpdated", (e, data) => {
       // do something with data.listingId
     });
     ```
@@ -2753,13 +2747,13 @@ Other Style Guides
 
     ```javascript
     // bad
-    const sidebar = $('.sidebar');
+    const sidebar = $(".sidebar");
 
     // good
-    const $sidebar = $('.sidebar');
+    const $sidebar = $(".sidebar");
 
     // good
-    const $sidebarBtn = $('.sidebar-btn');
+    const $sidebarBtn = $(".sidebar-btn");
     ```
 
   <a name="jquery--cache"></a><a name="25.2"></a>
@@ -2768,49 +2762,49 @@ Other Style Guides
     ```javascript
     // bad
     function setSidebar() {
-      $('.sidebar').hide();
+      $(".sidebar").hide();
 
       // ...stuff...
 
-      $('.sidebar').css({
-        'background-color': 'pink'
+      $(".sidebar").css({
+        "background-color": "pink"
       });
     }
 
     // good
     function setSidebar() {
-      const $sidebar = $('.sidebar');
+      const $sidebar = $(".sidebar");
       $sidebar.hide();
 
       // ...stuff...
 
       $sidebar.css({
-        'background-color': 'pink'
+        "background-color": "pink"
       });
     }
     ```
 
   <a name="jquery--queries"></a><a name="25.3"></a>
-  - [25.3](#jquery--queries) For DOM queries use Cascading `$('.sidebar ul')` or parent > child `$('.sidebar > ul')`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
+  - [25.3](#jquery--queries) For DOM queries use Cascading `$(".sidebar ul")` or parent > child `$(".sidebar > ul")`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
 
   <a name="jquery--find"></a><a name="25.4"></a>
   - [25.4](#jquery--find) Use `find` with scoped jQuery object queries.
 
     ```javascript
     // bad
-    $('ul', '.sidebar').hide();
+    $("ul", ".sidebar").hide();
 
     // bad
-    $('.sidebar').find('ul').hide();
+    $(".sidebar").find("ul").hide();
 
     // good
-    $('.sidebar ul').hide();
+    $(".sidebar ul").hide();
 
     // good
-    $('.sidebar > ul').hide();
+    $(".sidebar > ul").hide();
 
     // good
-    $sidebar.find('ul').hide();
+    $sidebar.find("ul").hide();
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -2819,7 +2813,7 @@ Other Style Guides
 ## ECMAScript 5 Compatibility
 
   <a name="es5-compat--kangax"></a><a name="26.1"></a>
-  - [26.1](#es5-compat--kangax) Refer to [Kangax](https://twitter.com/kangax/)'s ES5 [compatibility table](https://kangax.github.io/es5-compat-table/).
+  - [26.1](#es5-compat--kangax) Refer to [Kangax](https://twitter.com/kangax/)"s ES5 [compatibility table](https://kangax.github.io/es5-compat-table/).
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -2867,7 +2861,7 @@ Other Style Guides
    - Strive to write many small pure functions, and minimize where mutations occur.
    - Be cautious about stubs and mocks - they can make your tests more brittle.
    - We primarily use [`mocha`](https://www.npmjs.com/package/mocha) at Airbnb. [`tape`](https://www.npmjs.com/package/tape) is also used occasionally for small, separate modules.
-   - 100% test coverage is a good goal to strive for, even if it's not always practical to reach it.
+   - 100% test coverage is a good goal to strive for, even if it"s not always practical to reach it.
    - Whenever you fix a bug, _write a regression test_. A bug fixed without a regression test is almost certainly going to break again in the future.
 
 **[⬆ back to top](#table-of-contents)**
@@ -2946,7 +2940,7 @@ Other Style Guides
   - [Third Party JavaScript](https://www.manning.com/books/third-party-javascript) - Ben Vinegar and Anton Kovalyov
   - [Effective JavaScript: 68 Specific Ways to Harness the Power of JavaScript](http://amzn.com/0321812182) - David Herman
   - [Eloquent JavaScript](http://eloquentjavascript.net/) - Marijn Haverbeke
-  - [You Don't Know JS: ES6 & Beyond](http://shop.oreilly.com/product/0636920033769.do) - Kyle Simpson
+  - [You Don"t Know JS: ES6 & Beyond](http://shop.oreilly.com/product/0636920033769.do) - Kyle Simpson
 
 **Blogs**
 
@@ -2972,7 +2966,7 @@ Other Style Guides
 
 ## In the Wild
 
-  This is a list of organizations that are using this style guide. Send us a pull request and we'll add you to the list.
+  This is a list of organizations that are using this style guide. Send us a pull request and we"ll add you to the list.
 
   - **4Catalyzer**: [4Catalyzer/javascript](https://github.com/4Catalyzer/javascript)
   - **Aan Zee**: [AanZee/javascript](https://github.com/AanZee/javascript)
@@ -3094,7 +3088,7 @@ Copyright (c) 2014-2016 Airbnb
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
+"Software"), to deal in the Software without restriction, including
 without limitation the rights to use, copy, modify, merge, publish,
 distribute, sublicense, and/or sell copies of the Software, and to
 permit persons to whom the Software is furnished to do so, subject to
@@ -3103,7 +3097,7 @@ the following conditions:
 The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
@@ -3115,6 +3109,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Amendments
 
-We encourage you to fork this guide and change the rules to fit your team's style guide. Below, you may list some amendments to the style guide. This allows you to periodically update your style guide without having to deal with merge conflicts.
+We encourage you to fork this guide and change the rules to fit your team"s style guide. Below, you may list some amendments to the style guide. This allows you to periodically update your style guide without having to deal with merge conflicts.
 
 # };
