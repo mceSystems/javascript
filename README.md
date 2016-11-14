@@ -857,32 +857,10 @@ Other Style Guides
 	});
     ```
 
-  <a name="arrows--paren-wrap"></a><a name="8.3"></a>
-  - [8.3](#arrows--paren-wrap) In case the expression spans over multiple lines, wrap it in parentheses for better readability.
-
-    > Why? It shows clearly where the function starts and ends.
-
-    ```js
-    // bad
-    ["get", "post", "put"].map(httpMethod => Object.prototype.hasOwnProperty.call(
-        httpMagicObjectWithAVeryLongName,
-        httpMethod
-      )
-    );
-
-    // good
-    ["get", "post", "put"].map(httpMethod => (
-      Object.prototype.hasOwnProperty.call(
-        httpMagicObjectWithAVeryLongName,
-        httpMethod
-      )
-    ));
-    ```
-
   <a name="arrows--one-arg-parens"></a><a name="8.4"></a>
-  - [8.4](#arrows--one-arg-parens) If your function takes a single argument and doesn’t use braces, omit the parentheses. Otherwise, always include parentheses around arguments. eslint: [`arrow-parens`](http://eslint.org/docs/rules/arrow-parens.html) jscs:  [`disallowParenthesesAroundArrowParam`](http://jscs.info/rule/disallowParenthesesAroundArrowParam)
+  - [8.3](#arrows--one-arg-parens) Even if your function takes a single argument always use braces and parentheses. eslint: [`arrow-parens`](http://eslint.org/docs/rules/arrow-parens.html) jscs:  [`disallowParenthesesAroundArrowParam`](http://jscs.info/rule/disallowParenthesesAroundArrowParam)
 
-    > Why? Less visual clutter.
+    > Why? Unified way of work, and avoiding potential bugs when adding more arguments.
 
     ```js
     // bad
@@ -907,26 +885,6 @@ Other Style Guides
       const y = x + 1;
       return x * y;
     });
-    ```
-
-  <a name="arrows--confusing"></a><a name="8.5"></a>
-  - [8.5](#arrows--confusing) Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`). eslint: [`no-confusing-arrow`](http://eslint.org/docs/rules/no-confusing-arrow)
-
-    ```js
-    // bad
-    const itemHeight = item => item.height > 256 ? item.largeSize : item.smallSize;
-
-    // bad
-    const itemHeight = (item) => item.height > 256 ? item.largeSize : item.smallSize;
-
-    // good
-    const itemHeight = item => (item.height > 256 ? item.largeSize : item.smallSize);
-
-    // good
-    const itemHeight = (item) => {
-      const { height, largeSize, smallSize } = item;
-      return height > 256 ? largeSize : smallSize;
-    };
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1046,7 +1004,7 @@ Other Style Guides
     ```
 
   <a name="constructors--no-useless"></a><a name="9.5"></a>
-  - [9.5](#constructors--no-useless) Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary. eslint: [`no-useless-constructor`](http://eslint.org/docs/rules/no-useless-constructor)
+  - [9.5](#constructors--no-useless) Don't use emptry constructors, or one that just delegates to a parent class. Classes have a default constructor if one is not specified. eslint: [`no-useless-constructor`](http://eslint.org/docs/rules/no-useless-constructor)
 
     ```javascript
     // bad
@@ -1104,7 +1062,7 @@ Other Style Guides
 ## Modules
 
   <a name="modules--use-them"></a><a name="10.1"></a>
-  - [10.1](#modules--use-them) Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
+  - [10.1](#modules--use-them) In transpiled code (such as react code over babel), always prefer modules (`import`/`export`) over a non-standard module system.
 
     > Why? Modules are the future, let's start using the future now.
 
@@ -1133,6 +1091,9 @@ Other Style Guides
 
     // good
     import AirbnbStyleGuide from "./AirbnbStyleGuide";
+
+	// good
+	import { api, core } from "mce-jarvis";
     ```
 
   <a name="modules--no-export-from-import"></a><a name="10.3"></a>
@@ -1175,7 +1136,7 @@ Other Style Guides
   <a name="modules--no-mutable-exports"></a>
   - [10.5](#modules--no-mutable-exports) Do not export mutable bindings.
  eslint: [`import/no-mutable-exports`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md)
-    > Why? Mutation should be avoided in general, but in particular when exporting mutable bindings. While this technique may be needed for some special cases, in general, only constant references should be exported.
+    > Why? Mutation should be avoided in general, but in particular when exporting mutable bindings. While this technique may be needed for some special cases, in general, only constant references should be exported. Read <a href="http://www.2ality.com/2015/07/es6-module-exports.html">here</a>, for further explenation.
 
     ```javascript
     // bad
@@ -1229,11 +1190,11 @@ Other Style Guides
 
     // good
     import {
-      longNameA,
-      longNameB,
-      longNameC,
-      longNameD,
-      longNameE,
+    	longNameA,
+		longNameB,
+		longNameC,
+		longNameD,
+    	longNameE,
     } from "path";
     ```
 
@@ -1257,7 +1218,7 @@ Other Style Guides
 ## Iterators and Generators
 
   <a name="iterators--nope"></a><a name="11.1"></a>
-  - [11.1](#iterators--nope) Don"t use iterators. Prefer JavaScript"s higher-order functions instead of loops like `for-in` or `for-of`. eslint: [`no-iterator`](http://eslint.org/docs/rules/no-iterator.html) [`no-restricted-syntax`](http://eslint.org/docs/rules/no-restricted-syntax)
+  - [11.1](#iterators--nope) Prefer JavaScript"s higher-order functions instead of loops like `for-in` or `for-of`. eslint: [`no-iterator`](http://eslint.org/docs/rules/no-iterator.html) [`no-restricted-syntax`](http://eslint.org/docs/rules/no-restricted-syntax)
 
     > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects.
 
@@ -1266,7 +1227,7 @@ Other Style Guides
     ```javascript
     const numbers = [1, 2, 3, 4, 5];
 
-    // bad
+    // good
     let sum = 0;
     for (let num of numbers) {
       sum += num;
@@ -1274,7 +1235,7 @@ Other Style Guides
 
     sum === 15;
 
-    // good
+    // better
     let sum = 0;
     numbers.forEach(num => sum += num);
     sum === 15;
@@ -1284,53 +1245,41 @@ Other Style Guides
     sum === 15;
     ```
 
-  <a name="generators--nope"></a><a name="11.2"></a>
-  - [11.2](#generators--nope) Don"t use generators for now.
+  <a name="generators--coroutines"></a>
+  - [11.2](#generators--coroutines) Prefer using coroutines over promise chaining or fuillfilment/rejection callbacks. Note that due to the lack of lexical this support in generator functions, when needed, use the `.bind(this)`.
 
-    > Why? They don"t transpile well to ES5.
-
-  <a name="generators--spacing"></a>
-  - [11.3](#generators--spacing) If you must use generators, or if you disregard [our advice](#generators--nope), make sure their function signature is spaced properly. eslint: [`generator-star-spacing`](http://eslint.org/docs/rules/generator-star-spacing)
-
-    > Why? `function` and `*` are part of the same conceptual keyword - `*` is not a modifier for `function`, `function*` is a unique construct, different from `function`.
+    > Why? Avioiding callback hell, and visual clutter in the code.
 
     ```js
     // bad
-    function * foo() {
-    }
+	console.log("Here I begin");
+    foo()
+		.then((value) => {
+			return bar(value).then((barResult) => {
+				return barResult++;
+			})
+		})
+		.then((res) => {
+			console.log(res);
+		});
 
-    const bar = function * () {
-    }
+	// good
+	co(function*(){
+		console.log("Here I begin");
+		let value = yield foo();
+		let barResult = yield bar(value);
+		let res = barResult++;
+		console.log(res);
+	});
 
-    const baz = function *() {
-    }
-
-    const quux = function*() {
-    }
-
-    function*foo() {
-    }
-
-    function *foo() {
-    }
-
-    // very bad
-    function
-    *
-    foo() {
-    }
-
-    const wat = function
-    *
-    () {
-    }
-
-    // good
-    function* foo() {
-    }
-
-    const foo = function* () {
-    }
+	// good
+	co(function*(){
+		console.log("Here I begin");
+		let value = yield foo();
+		let barResult = yield bar(value, this.anotherValue);
+		let res = barResult++;
+		console.log(res);
+	}.bind(this));
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1506,40 +1455,6 @@ Other Style Guides
     // the same applies for `const`
     ```
 
-  <a name="variables--unary-increment-decrement"></a><a name="13.6"></a>
-  - [13.6](#variables--unary-increment-decrement) Avoid using unary increments and decrements (++, --). eslint [`no-plusplus`](http://eslint.org/docs/rules/no-plusplus)
-
-    > Why? Per the eslint documentation, unary increment and decrement statements are subject to automatic semicolon insertion and can cause silent errors with incrementing or decrementing values within an application. It is also more expressive to mutate your values with statements like `num += 1` instead of `num ++`. Disallowing unary increment and decrement statements also prevents you from pre-incrementing/pre-decrementing values unintentionally which can also cause unexpected behavior in your programs.
-
-    ```javascript
-      // bad
-
-      let array = [1, 2, 3];
-      let num = 1;
-      num ++;
-      -- num;
-
-      let sum = 0;
-      let truthyCount = 0;
-      for(let i = 0; i < array.length; i++){
-        let value = array[i];
-        sum += value;
-        if (value) {
-          truthyCount++;
-        }
-      }
-
-      // good
-
-      let array = [1, 2, 3];
-      let num = 1;
-      num += 1;
-      num -= 1;
-
-      const sum = array.reduce((a, b) => a + b, 0);
-      const truthyCount = array.filter(Boolean).length;
-    ```
-
 **[⬆ back to top](#table-of-contents)**
 
 
@@ -1643,7 +1558,7 @@ Other Style Guides
 **[⬆ back to top](#table-of-contents)**
 
 
-## Comparison Operators & Equality
+## Comparison Operators & (Power of) Equality
 
   <a name="comparison--eqeqeq"></a><a name="15.1"></a>
   - [15.1](#comparison--eqeqeq) Use `===` and `!==` over `==` and `!=`. eslint: [`eqeqeq`](http://eslint.org/docs/rules/eqeqeq.html)
@@ -1750,7 +1665,7 @@ Other Style Guides
     ```
 
   <a name="comparison--nested-ternaries"></a><a name="15.6"></a>
-  - [15.6](#comparison--nested-ternaries) Ternaries should not be nested and generally be single line expressions.
+  - [15.6](#comparison--nested-ternaries) Ternaries should not be nested and generally be single line expressions. Always use braces to surround the condition.
 
     eslint rules: [`no-nested-ternary`](http://eslint.org/docs/rules/no-nested-ternary.html).
 
@@ -1761,16 +1676,16 @@ Other Style Guides
       : value1 > value2 ? "baz" : null;
 
     // better
-    const maybeNull = value1 > value2 ? "baz" : null;
+	const maybeNull = (value1 > value2) ? "baz" : null;
 
-    const foo = maybe1 > maybe2
+	const foo = (maybe1 > maybe2)
       ? "bar"
       : maybeNull;
 
     // best
-    const maybeNull = value1 > value2 ? "baz" : null;
+	const maybeNull = (value1 > value2) ? "baz" : null;
 
-    const foo = maybe1 > maybe2 ? "bar" : maybeNull;
+	const foo = (maybe1 > maybe2) ? "bar" : maybeNull;
     ```
 
   <a name="comparison--unneeded-ternary"></a><a name="15.7"></a>
@@ -1790,20 +1705,21 @@ Other Style Guides
     const baz = !c;
     ```
 
+
 **[⬆ back to top](#table-of-contents)**
 
 
 ## Blocks
 
   <a name="blocks--braces"></a><a name="16.1"></a>
-  - [16.1](#blocks--braces) Use braces with all multi-line blocks.
+  - [16.1](#blocks--braces) Use braces with all blocks (multi and single line). Always use a line-break after opening curly brace. 
 
     ```javascript
     // bad
     if (test)
       return false;
 
-    // good
+    // bad
     if (test) return false;
 
     // good
@@ -1821,7 +1737,7 @@ Other Style Guides
     ```
 
   <a name="blocks--cuddled-elses"></a><a name="16.2"></a>
-  - [16.2](#blocks--cuddled-elses) If you"re using multi-line blocks with `if` and `else`, put `else` on the same line as your `if` block's closing brace. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
+  - [16.2](#blocks--cuddled-elses) If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your `if` block's closing brace. Same goes for `try` and `catch` eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
 
     ```javascript
     // bad
@@ -1833,6 +1749,15 @@ Other Style Guides
       thing3();
     }
 
+	// bad
+    try {
+      thing1();
+      thing2();
+    }
+    catch(e) {
+      thing3();
+    }
+
     // good
     if (test) {
       thing1();
@@ -1840,8 +1765,15 @@ Other Style Guides
     } else {
       thing3();
     }
+	
+	// good
+	try {
+      thing1();
+      thing2();
+    } catch(e) {
+      thing3();
+    }
     ```
-
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -1948,13 +1880,30 @@ Other Style Guides
     }
     ```
 
+  <a name="comments--documentation"></a><a name="17.5"></a>
+  - [17.5](#comments--documentation) Use JSDoc standards when documenting (http://usejsdoc.org/).
+
+    ```javascript
+	
+    class Calculator extends Abacus {
+	/**
+	 * Create a calculator.
+	 * @param {string} type - The type of the calculator (on of "prgorammer", "scientific", "regular").
+	 */
+      constructor(type) {
+        super();
+		//...
+      }
+    }
+    ```
+
 **[⬆ back to top](#table-of-contents)**
 
 
 ## Whitespace
 
   <a name="whitespace--spaces"></a><a name="18.1"></a>
-  - [18.1](#whitespace--spaces) Use soft tabs set to 2 spaces. eslint: [`indent`](http://eslint.org/docs/rules/indent.html) jscs: [`validateIndentation`](http://jscs.info/rule/validateIndentation)
+  - [18.1](#whitespace--spaces) **Always** use hard tabs (the \t character). eslint: [`indent`](http://eslint.org/docs/rules/indent.html) jscs: [`validateIndentation`](http://jscs.info/rule/validateIndentation)
 
     ```javascript
     // bad
@@ -1967,9 +1916,14 @@ Other Style Guides
     ∙const name;
     }
 
-    // good
+    // bad
     function baz() {
     ∙∙const name;
+    }
+
+	// good
+	function baz() {
+    	const name;
     }
     ```
 
@@ -2093,11 +2047,11 @@ Other Style Guides
 
     // good
     const leds = stage.selectAll(".led")
-        .data(data)
-      .enter().append("svg:svg")
+    	.data(data)
+    	.enter().append("svg:svg")
         .classed("led", true)
         .attr("width", (radius + margin) * 2)
-      .append("svg:g")
+    	.append("svg:g")
         .attr("transform", "translate(" + (radius + margin) + "," + (radius + margin) + ")")
         .call(tron.led);
 
@@ -2406,7 +2360,7 @@ Other Style Guides
     const totalScore = this.reviewScore + ""; // invokes this.reviewScore.valueOf()
 
     // bad
-    const totalScore = this.reviewScore.toString(); // isn"t guaranteed to return a string
+    const totalScore = this.reviewScore.toString(); // isn't guaranteed to return a string
 
     // good
     const totalScore = String(this.reviewScore);
@@ -2535,22 +2489,45 @@ Other Style Guides
     ```
 
   <a name="naming--leading-underscore"></a><a name="22.4"></a>
-  - [22.4](#naming--leading-underscore) Do not use trailing or leading underscores. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
+  - [22.4](#naming--leading-underscore) Only for class members, use leading underscores to indicate private/protected members. Use double underscore for private members, and single underscore protected members. In addition, group all members of a certain type in the smae palces in the constructor/class. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
 
-    > Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won"t count as breaking, or that tests aren"t needed. tl;dr: if you want something to be “private”, it must not be observably present.
+    > Note: JavaScript does not have the concept of privacy in terms of properties or methods. This is a pure visual convention to help maintaining code.
 
     ```javascript
-    // bad
-    this.__firstName__ = "Panda";
-    this.firstName_ = "Panda";
-    this._firstName = "Panda";
+    class Foo(){
+		constructor(){
+			//private members
+			this.__member1 = null;
+			this.__member2 = null;
 
-    // good
-    this.firstName = "Panda";
+			//protected members
+			this._member3 = null;
+			this._member4 = null;
+
+			//public members
+			this.foo = null;
+			this.bar = null;
+		}
+		__privateMethod(){
+
+		}
+		__privateMethodEx(){
+
+		}
+		_protectedMethod(){
+
+		}
+		_doProtectedMethod(){
+
+		}
+		publicMethod(){
+
+		}
+	}
     ```
 
   <a name="naming--self-this"></a><a name="22.5"></a>
-  - [22.5](#naming--self-this) Don"t save references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind). jscs: [`disallowNodeTypes`](http://jscs.info/rule/disallowNodeTypes)
+  - [22.5](#naming--self-this) Don't save references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind). jscs: [`disallowNodeTypes`](http://jscs.info/rule/disallowNodeTypes)
 
     ```javascript
     // bad
@@ -2578,7 +2555,7 @@ Other Style Guides
     ```
 
   <a name="naming--filename-matches-export"></a><a name="22.6"></a>
-  - [22.6](#naming--filename-matches-export) A base filename should exactly match the name of its default export.
+  - [22.6](#naming--filename-matches-export) A base filename should exactly match the name of its default export. A directory's name should alwys be camelCase, unless it's the root of a module (i.e. has a package.json in it), then it should be kebab-case.
 
     ```javascript
     // file 1 contents
@@ -2610,6 +2587,7 @@ Other Style Guides
     import CheckBox from "./CheckBox"; // PascalCase export/import/filename
     import fortyTwo from "./fortyTwo"; // camelCase export/import/filename
     import insideDirectory from "./insideDirectory"; // camelCase export/import/directory name/implicit "index"
+	import insidePackageDirectory from "./inside-packge-directory"; // kebab-case export/import/directory name/implicit "index"
     // ^ supports both insideDirectory.js and insideDirectory/index.js
     ```
 
@@ -2645,7 +2623,7 @@ Other Style Guides
   - [23.1](#accessors--not-required) Accessor functions for properties are not required.
 
   <a name="accessors--no-getters-setters"></a><a name="23.2"></a>
-  - [23.2](#accessors--no-getters-setters) Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use getVal() and setVal("hello").
+  - [23.2](#accessors--no-getters-setters) Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use getVal() and setVal("hello"). Use getters only for static members.
 
     ```javascript
     // bad
@@ -2661,6 +2639,11 @@ Other Style Guides
 
     // good
     class Dragon {
+	  static get properties(){
+		  return {
+
+		  };
+	  }
       getAge() {
         // ...
       }
@@ -2743,80 +2726,11 @@ Other Style Guides
 
 ## jQuery
 
-  <a name="jquery--dollar-prefix"></a><a name="25.1"></a>
-  - [25.1](#jquery--dollar-prefix) Prefix jQuery object variables with a `$`. jscs: [`requireDollarBeforejQueryAssignment`](http://jscs.info/rule/requireDollarBeforejQueryAssignment)
-
-    ```javascript
-    // bad
-    const sidebar = $(".sidebar");
-
-    // good
-    const $sidebar = $(".sidebar");
-
-    // good
-    const $sidebarBtn = $(".sidebar-btn");
-    ```
-
-  <a name="jquery--cache"></a><a name="25.2"></a>
-  - [25.2](#jquery--cache) Cache jQuery lookups.
-
-    ```javascript
-    // bad
-    function setSidebar() {
-      $(".sidebar").hide();
-
-      // ...stuff...
-
-      $(".sidebar").css({
-        "background-color": "pink"
-      });
-    }
-
-    // good
-    function setSidebar() {
-      const $sidebar = $(".sidebar");
-      $sidebar.hide();
-
-      // ...stuff...
-
-      $sidebar.css({
-        "background-color": "pink"
-      });
-    }
-    ```
-
-  <a name="jquery--queries"></a><a name="25.3"></a>
-  - [25.3](#jquery--queries) For DOM queries use Cascading `$(".sidebar ul")` or parent > child `$(".sidebar > ul")`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
-
-  <a name="jquery--find"></a><a name="25.4"></a>
-  - [25.4](#jquery--find) Use `find` with scoped jQuery object queries.
-
-    ```javascript
-    // bad
-    $("ul", ".sidebar").hide();
-
-    // bad
-    $(".sidebar").find("ul").hide();
-
-    // good
-    $(".sidebar ul").hide();
-
-    // good
-    $(".sidebar > ul").hide();
-
-    // good
-    $sidebar.find("ul").hide();
-    ```
+  <a name="jquery--avoid"></a><a name="25.1"></a>
+  - [25.1](#jquery--avoid) Avoid using jQuery. If you think you need it, consult your supervisor. 
 
 **[⬆ back to top](#table-of-contents)**
 
-
-## ECMAScript 5 Compatibility
-
-  <a name="es5-compat--kangax"></a><a name="26.1"></a>
-  - [26.1](#es5-compat--kangax) Refer to [Kangax](https://twitter.com/kangax/)'s ES5 [compatibility table](https://kangax.github.io/es5-compat-table/).
-
-**[⬆ back to top](#table-of-contents)**
 
 <a name="ecmascript-6-styles"></a>
 ## ECMAScript 6+ (ES 2015+) Styles
