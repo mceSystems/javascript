@@ -2450,9 +2450,31 @@
     const thisIsMyObject = {};
     function thisIsMyFunction() {}
     ```
+  <a name="naming--UPPER_SNAKE_CASE"></a><a name="22.2"></a>
+  - [22.3](#naming--UPPER_SNAKE_CASE) Use UPPER_SNAKE_CASE when naming module-global primitive literals.
+
+    ```javascript
+    // bad
+    const standardUserName = "John"
+    class User{
+      contructor(){
+        const USER_NAME = this.getName();
+        const USER_FAMILY_NAME = "some name";
+      }
+    }
+
+    // good
+    const STANDARD_USER_NAME = "John"
+    class User{
+      contructor(){
+        const userName = this.getName();
+        const userFamilyName = "some name";
+      }
+    }
+    ```
 
   <a name="naming--PascalCase"></a><a name="22.3"></a>
-  - [22.3](#naming--PascalCase) Use PascalCase only when naming constructors or classes. eslint: [`new-cap`](http://eslint.org/docs/rules/new-cap.html) jscs: [`requireCapitalizedConstructors`](http://jscs.info/rule/requireCapitalizedConstructors)
+  - [22.4](#naming--PascalCase) Use PascalCase only when naming constructors or classes, or referencing a class. eslint: [`new-cap`](http://eslint.org/docs/rules/new-cap.html) jscs: [`requireCapitalizedConstructors`](http://jscs.info/rule/requireCapitalizedConstructors)
 
     ```javascript
     // bad
@@ -2464,6 +2486,8 @@
       name: "nope",
     });
 
+    const user = require("user");
+
     // good
     class User {
       constructor(options) {
@@ -2474,10 +2498,12 @@
     const good = new User({
       name: "yup",
     });
+
+    const User = require("user");
     ```
 
   <a name="naming--leading-underscore"></a><a name="22.4"></a>
-  - [22.4](#naming--leading-underscore) Only for class members, use leading underscores to indicate private/protected members. Use double underscore for private members, and single underscore protected members. In addition, group all members of a certain type in the smae palces in the constructor/class. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
+  - [22.5](#naming--leading-underscore) Only for class members, use leading underscores to indicate private/protected members. Use double underscore for private members, and single underscore protected members. In addition, group all members of a certain type in the smae palces in the constructor/class. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
 
     > Note: JavaScript does not have the concept of privacy in terms of properties or methods. This is a pure visual convention to help maintaining code.
 
@@ -2515,7 +2541,7 @@
     ```
 
   <a name="naming--self-this"></a><a name="22.5"></a>
-  - [22.5](#naming--self-this) Don't save references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind). jscs: [`disallowNodeTypes`](http://jscs.info/rule/disallowNodeTypes)
+  - [22.6](#naming--self-this) Don't save references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind). jscs: [`disallowNodeTypes`](http://jscs.info/rule/disallowNodeTypes)
 
     ```javascript
     // bad
@@ -2543,7 +2569,7 @@
     ```
 
   <a name="naming--filename-matches-export"></a><a name="22.6"></a>
-  - [22.6](#naming--filename-matches-export) A base filename should exactly match the name of its default export. A directory's name should alwys be camelCase, unless it's the root of a module (i.e. has a package.json in it), then it should be kebab-case.
+  - [22.7](#naming--filename-matches-export) A base filename should exactly match the name of its default export. A directory's name should alwys be camelCase, unless it's the root of a module (i.e. has a package.json in it), then it should be kebab-case.
 
     ```javascript
     // file 1 contents
@@ -2580,7 +2606,7 @@
     ```
 
   <a name="naming--camelCase-default-export"></a><a name="22.7"></a>
-  - [22.7](#naming--camelCase-default-export) Use camelCase when you export-default a function. Your filename should be identical to your function's name.
+  - [22.8](#naming--camelCase-default-export) Use camelCase when you export-default a function. Your filename should be identical to your function's name.
 
     ```javascript
     function makeStyleGuide() {
@@ -2590,7 +2616,7 @@
     ```
 
   <a name="naming--PascalCase-singleton"></a><a name="22.8"></a>
-  - [22.8](#naming--PascalCase-singleton) Use PascalCase when you export a constructor / class / singleton / function library / bare object.
+  - [22.9](#naming--PascalCase-singleton) Use PascalCase when you export a constructor / class / singleton / function library / bare object.
 
     ```javascript
     const AirbnbStyleGuide = {
