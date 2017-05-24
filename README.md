@@ -2501,8 +2501,29 @@
 
     const User = require("user");
     ```
+  <a name="naming--snake_case"></a><a name="22.4"></a>
+  - [22.4](#naming--snake_case) Use snake_case only when naming keys in a strings object (for translations). 
 
-  <a name="naming--leading-underscore"></a><a name="22.4"></a>
+    ```javascript
+    // bad
+    function user(options) {
+      this.name_of_member = options.name;
+    }
+
+    const bad = new user({
+      name_of_user: "nope",
+    });
+
+    const user = require("user");
+
+    // good
+    {
+      strings: {
+        hello_world: "Hello world"
+      }
+    }
+    ```
+  <a name="naming--leading-underscore"></a><a name="22.5"></a>
   - [22.5](#naming--leading-underscore) Only for class members, use leading underscores to indicate private/protected members. Use double underscore for private members, and single underscore protected members. In addition, group all members of a certain type in the smae palces in the constructor/class. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
 
     > Note: JavaScript does not have the concept of privacy in terms of properties or methods. This is a pure visual convention to help maintaining code.
@@ -2540,7 +2561,7 @@
 	}
     ```
 
-  <a name="naming--self-this"></a><a name="22.5"></a>
+  <a name="naming--self-this"></a><a name="22.6"></a>
   - [22.6](#naming--self-this) Don't save references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind). jscs: [`disallowNodeTypes`](http://jscs.info/rule/disallowNodeTypes)
 
     ```javascript
@@ -2568,7 +2589,7 @@
     }
     ```
 
-  <a name="naming--filename-matches-export"></a><a name="22.6"></a>
+  <a name="naming--filename-matches-export"></a><a name="22.7"></a>
   - [22.7](#naming--filename-matches-export) A base filename should exactly match the name of its default export. A directory's name should alwys be camelCase, unless it's the root of a module (i.e. has a package.json in it), then it should be kebab-case.
 
     ```javascript
@@ -2605,7 +2626,7 @@
     // ^ supports both insideDirectory.js and insideDirectory/index.js
     ```
 
-  <a name="naming--camelCase-default-export"></a><a name="22.7"></a>
+  <a name="naming--camelCase-default-export"></a><a name="22.8"></a>
   - [22.8](#naming--camelCase-default-export) Use camelCase when you export-default a function. Your filename should be identical to your function's name.
 
     ```javascript
@@ -2615,7 +2636,7 @@
     export default makeStyleGuide;
     ```
 
-  <a name="naming--PascalCase-singleton"></a><a name="22.8"></a>
+  <a name="naming--PascalCase-singleton"></a><a name="22.9"></a>
   - [22.9](#naming--PascalCase-singleton) Use PascalCase when you export a constructor / class / singleton / function library / bare object.
 
     ```javascript
